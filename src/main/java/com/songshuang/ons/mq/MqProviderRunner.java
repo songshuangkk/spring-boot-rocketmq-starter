@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.util.CollectionUtils;
+import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -75,7 +76,15 @@ public class MqProviderRunner implements CommandLineRunner, DisposableBean {
 
       String producerId = messageProvider.producerId();
 
+      // 获取配置中的topic
+      topic = mqProperties.getConfig().get(topic).toString();
+
       messageProducerService.setTopIc(topic);
+
+      // 获取配置中的topic
+      if (!StringUtils.isEmpty(tag) && mqProperties.getConfig().get(tag) != null) {
+        tag = mqProperties.getConfig().get(tag).toString();
+      }
 
       messageProducerService.setTag(tag);
 

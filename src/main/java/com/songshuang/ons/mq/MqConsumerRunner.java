@@ -11,6 +11,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.SerializationUtils;
+import org.springframework.util.StringUtils;
 
 import java.util.*;
 
@@ -70,7 +71,13 @@ public class MqConsumerRunner implements CommandLineRunner, DisposableBean {
 
       String topIc = messageConsumerAnn.topic();
 
+      topIc = mqProperties.getConfig().get(topIc).toString();
+
       String tag = messageConsumerAnn.tag();
+
+      if (!StringUtils.isEmpty(tag) && mqProperties.getConfig().get(tag) != null) {
+        tag = mqProperties.getConfig().get(tag).toString();
+      }
 
       String consumerId = messageConsumerAnn.consumerId();
 
