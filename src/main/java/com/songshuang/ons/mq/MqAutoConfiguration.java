@@ -17,7 +17,7 @@ public class MqAutoConfiguration {
   private MqProperties mqProperties;
 
   @Bean
-  @ConditionalOnProperty(value = "mq.meipingmi.consumer.enable", havingValue = "true")
+  @ConditionalOnProperty(value = "mq.application.consumer.enable", havingValue = "true")
   public MqConsumerRunner mqConsumerRunner() {
 
     return new MqConsumerRunner();
@@ -25,7 +25,7 @@ public class MqAutoConfiguration {
   }
 
   @Bean
-  @ConditionalOnProperty(value = "mq.meipingmi.provider.enable", havingValue = "true")
+  @ConditionalOnProperty(value = "mq.application.provider.enable", havingValue = "true")
   public MqProviderRunner mqProviderRunner() {
 
     return new MqProviderRunner();

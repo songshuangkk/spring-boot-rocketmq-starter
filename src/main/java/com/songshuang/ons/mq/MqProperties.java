@@ -7,7 +7,7 @@ import java.util.Properties;
 /**
  * 消息队列配置信息.
  */
-@ConfigurationProperties(prefix = "mq.meipingmi")
+@ConfigurationProperties(prefix = "mq.application")
 public class MqProperties {
 
   private String[] consumer;
