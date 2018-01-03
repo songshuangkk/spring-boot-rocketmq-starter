@@ -2,11 +2,12 @@ package com.songshuang.ons.mq.constants;
 
 public interface ProviderTypeConstants {
 
-  final Integer NORMAL = 1;
-
-  final Integer DELAY = 2;
-
-  final Integer TIMER = 3;
-
-  final Integer TRANSACTION = 4;
+  // 普通正常消息
+  Integer NORMAL = 1;
+  // 延迟消息
+  Integer DELAY = 2;
+  // 定时消息
+  Integer TIMER = 3;
+  // 事务消息
+  Integer TRANSACTION = 4;
 }
