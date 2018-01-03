@@ -25,8 +25,9 @@ mq:
 ```
 
 ```java
-  @MessageProvider(topic=xxx, producerId=xxx)
+  @MessageProvider(providerType=xxx,topic=xxx, producerId=xxx)
 ```
+这里的providerType的类型可以参考ProviderTypeConstants中的定义。
 
 在使用的时候，服务消费放需要实现MessageConsumerService接口。服务消费放需要实现MessageProducerService接口并基础MessageBaseProducer类。
 
@@ -38,7 +39,7 @@ mq:
 public class Comsumer implements MessageConsumerService
 
 
-@MessageProvider(topic=xxx, producerId=xxx)
+@MessageProvider(providerType=xxx,topic=xxx, producerId=xxx)
 @Component
 public class Provider extends MessageBaseProducer implements MessageProducerService
 
