@@ -1,4 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
   com.songshuang.ons.mq.MqAutoConfiguration
-org.springframework.context.ApplicationContextInitializer=\
-  com.songshuang.ons.mq.MqConfigurationApplicationContextInitializer
