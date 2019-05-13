@@ -1,2 +1,1 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  com.songshuang.ons.mq.MqAutoConfiguration
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.github.songshuangkk.autoconfig.RocketAutoConfiguration

@@ -1,52 +1,25 @@
-# 阿里云ONS Spring boot starter 
+#Spring RocketMQ Starter
 
-## 使用方法
+### Install
 
-在application.yml文件中进行配置:
-```javascript
-mq:
-  application:
-      consumer:
-        enable: true              // 是否开启消息消费
-      provider:
-        enable: true              // 是否开启消息发送
-    config:
-      ONSAddr: xxx (选填)          // ONS服务地址
-      AccessKey: xxx (必填)        // ONS用户的access Key
-      SecretKey: xxx (必填)        // ONS用户的secret Key
-      myConsumerId: CID-ONS       // 可以在这里随便创建一个key名字并与ons上创建consumer ID对应作为value
-      myProviderId: PID-ONS       // 可以在这里随便创建一个key名字并与ons上创建provider ID对应作为value
-      myTopIc: TOPIC-ONS          // 可以在这里随便创建一个key名字并与ons上创建topic ID对应作为value
+* maven:
+    
+    ```jshelllanguage
+       <groupId>com.github.songshuangkk</groupId>
+          <artifactId>spring-boot-rocketmq-starter</artifactId>
+       <version>1.0-SNAPSHOT</version>
+    ```
+    
+### Start
+    
+ * Consumer: Using Annotation.
+ ```java
+@RocketConsumer
 ```
 
-###使用注解
-```java
-  @MessageConsumer(topic=xxx, consumerId=xxx)
+* Name Server Config:
+```yaml
+rocket: 
+    mq:
+      name-server-addr: localhost: localhost:9876
 ```
-
-```java
-  @MessageProvider(providerType=xxx,topic=xxx, producerId=xxx)
-```
-这里的providerType的类型可以参考ProviderTypeConstants中的定义。
-
-在使用的时候，服务消费放需要实现MessageConsumerService接口。服务消费放需要实现MessageProducerService接口并基础MessageBaseProducer类。
-
-使用方式如下:
-
-```java
-@MessageConsumer(topic=xxx, consumerId=xxx)
-@Component
-public class Comsumer implements MessageConsumerService
-
-
-@MessageProvider(providerType=xxx,topic=xxx, producerId=xxx)
-@Component
-public class Provider extends MessageBaseProducer implements MessageProducerService
-
-```
-
-服务消费放在使用的时候，只要调用sendMessage方法就能发送消息.
-
-
-### 关于消息体
-消息体的Bean我们可以自己定义。但是需要使用MessageBase进行包装。
